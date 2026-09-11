@@ -1,0 +1,13 @@
+# wildbill-charts — live delta server runtime (stdlib + yfinance + pandas).
+# Pinned from locally-tested macOS run (yfinance 1.2.0 + pandas 2.3.3).
+# Ubuntu 22.04 (python 3.10) / 24.04 (python 3.12) compatible.
+yfinance==1.2.0
+pandas==2.3.3
+numpy==2.0.2
+multitasking==0.0.13
+platformdirs==4.4.0
+pytz==2026.3.post1
+python-dateutil==2.9.0.post0
+tzdata==2026.3
+requests==2.32.5
+peewee==4.5.1

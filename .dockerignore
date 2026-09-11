@@ -1,0 +1,9 @@
+# Keep 688MB history OUT of the docker build context by default.
+# (Build stays fast; mount data as a volume when needed instead.)
+app/data/
+app/shots/
+.git/
+.venv/
+__pycache__/
+*.log
+.DS_Store

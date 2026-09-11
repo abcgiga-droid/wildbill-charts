@@ -1,0 +1,25 @@
+[Unit]
+Description=Wildbill Charts delta server (127.0.0.1:8910, static app/ + /api/*)
+After=network.target
+
+[Service]
+Type=simple
+# Isolated checkout — does NOT touch existing site files.
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/wildbill-charts
+ExecStart=/opt/wildbill-charts/.venv/bin/python server/server.py --port 8910
+Restart=always
+RestartSec=3
+# Hardening: read-only app code, small /tmp, no new privileges.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/tmp
+# Logs go to journald; view with: journalctl -u wildbill -f
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
