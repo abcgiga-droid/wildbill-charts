@@ -41,9 +41,19 @@
   #tfbar button { background: #131a24; color: #9aa4b2; border: 1px solid #1e2530; border-radius: 4px; font-size: 11px; padding: 2px 8px; cursor: pointer; }
   #tfbar button:hover { color: #fff; border-color: #00acc1; }
   #tfbar button.active { background: #00acc1; border-color: #00acc1; color: #fff; font-weight: 700; }
+  #toolbox { position: absolute; top: 6px; right: 78px; z-index: 6; display: flex; gap: 8px; }
+  #toolbox .grp { display: flex; gap: 4px; background: rgba(19,26,36,0.85); border: 1px solid #1e2530; border-radius: 5px; padding: 2px; }
+  #toolbox button { background: transparent; color: #9aa4b2; border: 0; border-radius: 3px; font-size: 11px; padding: 2px 8px; cursor: pointer; white-space: nowrap; }
+  #toolbox button:hover { color: #fff; }
+  #toolbox button.active { background: #00acc1; color: #fff; font-weight: 700; }
   #watchlist { width: 260px; border-left: 1px solid #1e2530; overflow-y: auto; background: #0f1419; position: relative; }
-  #watchlist h3 { padding: 6px 12px 6px; font-size: 14px; color: #fff; position: sticky; top: 0; background: #0f1419; z-index: 2; }
+  #watchlist h3 { padding: 6px 12px 2px; font-size: 14px; color: #fff; position: sticky; top: 0; background: #0f1419; z-index: 2; }
   #watchlist h3 .count { font-weight: 400; font-size: 12px; opacity: 0.7; }
+  #sortbar { display: grid; grid-template-columns: 60px 1fr 70px; gap: 4px; padding: 4px 12px 6px; position: sticky; top: 26px; background: #0f1419; z-index: 2; border-bottom: 1px solid #1e2530; }
+  #sortbar button { background: transparent; border: 0; color: #5a6472; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; padding: 2px 0; text-align: left; }
+  #sortbar button.c { text-align: right; }
+  #sortbar button:hover { color: #fff; }
+  #sortbar button.sorted { color: #00acc1; }
   .row { display: grid; grid-template-columns: 60px 1fr 70px; gap: 4px; padding: 6px 12px; cursor: pointer; font-size: 13px; border-left: 2px solid transparent; }
   .row:hover { background: #1a2230; }
   .row.active { background: #1a2230; border-left-color: #00acc1; }
@@ -66,11 +76,17 @@
 <div id="app">
   <div id="chart-wrap">
     <div id="tfbar"></div>
+    <div id="toolbox">
+      <div class="grp" id="typegrp"><button data-type="candle" class="active">Candle</button><button data-type="line">Line</button><button data-type="area">Area</button></div>
+      <div class="grp" id="maggrp"><button data-ma="20">SMA20</button><button data-ma="50">SMA50</button><button data-ma="200">SMA200</button></div>
+      <div class="grp" id="scalegrp"><button data-scale="log">Log</button><button data-scale="pct">%</button></div>
+    </div>
     <div id="symbol-head">loading&hellip;</div>
     <div id="chart"></div>
   </div>
   <div id="watchlist">
     <h3>Watchlist <span class="count" id="watch-count"></span></h3>
+    <div id="sortbar"><button data-sort="sym">Name</button><button data-sort="last" class="c">Price</button><button data-sort="chg" class="c">Chg%</button></div>
     <div id="rows"></div>
   </div>
 </div>
