@@ -1,0 +1,1894 @@
+{
+ "clicks": [
+  {
+   "symbol": "NVDA",
+   "tf": "5m",
+   "title": "NVDA 218.08 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "5m",
+   "title": "MSFT 492.80 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "5m",
+   "title": "AAPL 321.17 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "5m",
+   "title": "AMZN 252.45 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "5m",
+   "title": "JPM 352.58 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "5m",
+   "title": "WMT 105.98 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "5m",
+   "title": "V 367.57 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "5m",
+   "title": "JNJ 265.87 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "5m",
+   "title": "PG 142.38 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "5m",
+   "title": "HD 306.67 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "5m",
+   "title": "KO 88.43 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "5m",
+   "title": "UNH 391.65 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "5m",
+   "title": "CSCO 108.36 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "5m",
+   "title": "CVX 213.66 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "5m",
+   "title": "IBM 236.68 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "5m",
+   "title": "CRM 245.18 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "5m",
+   "title": "AXP 320.92 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "5m",
+   "title": "GS 1019.10 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "5m",
+   "title": "DIS 104.79 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "5m",
+   "title": "MCD 254.18 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "5m",
+   "title": "MRK 144.54 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "5m",
+   "title": "CAT 800.49 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "5m",
+   "title": "VZ 50.03 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "5m",
+   "title": "BA 206.60 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "5m",
+   "title": "AMGN 382.34 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "5m",
+   "title": "HON 202.75 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "5m",
+   "title": "NKE 36.97 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "5m",
+   "title": "SHW 316.51 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "5m",
+   "title": "MMM 162.29 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "5m",
+   "title": "TRV 365.43 [5m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "390 \u00d7 5m candles \u00b7 09-02 16:30 \u2192 09-10 16:25 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "15m",
+   "title": "NVDA 218.08 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "15m",
+   "title": "MSFT 492.80 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "15m",
+   "title": "AAPL 321.17 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "15m",
+   "title": "AMZN 252.45 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "15m",
+   "title": "JPM 352.58 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "15m",
+   "title": "WMT 105.98 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "15m",
+   "title": "V 367.57 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "15m",
+   "title": "JNJ 265.87 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "15m",
+   "title": "PG 142.38 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "15m",
+   "title": "HD 306.67 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "15m",
+   "title": "KO 88.43 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "15m",
+   "title": "UNH 391.65 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "15m",
+   "title": "CSCO 108.36 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "15m",
+   "title": "CVX 213.66 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "15m",
+   "title": "IBM 236.68 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "15m",
+   "title": "CRM 245.18 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "15m",
+   "title": "AXP 320.92 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "15m",
+   "title": "GS 1019.10 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "15m",
+   "title": "DIS 104.79 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "15m",
+   "title": "MCD 254.18 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "15m",
+   "title": "MRK 144.54 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "15m",
+   "title": "CAT 800.49 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "15m",
+   "title": "VZ 50.03 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "15m",
+   "title": "BA 206.60 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "15m",
+   "title": "AMGN 382.34 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "15m",
+   "title": "HON 202.75 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "15m",
+   "title": "NKE 36.97 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "15m",
+   "title": "SHW 316.51 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "15m",
+   "title": "MMM 162.29 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "15m",
+   "title": "TRV 365.43 [15m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "340 \u00d7 15m candles \u00b7 08-21 16:00 \u2192 09-10 16:15 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "30m",
+   "title": "NVDA 218.08 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "30m",
+   "title": "MSFT 492.80 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "30m",
+   "title": "AAPL 321.17 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "30m",
+   "title": "AMZN 252.45 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "30m",
+   "title": "JPM 352.58 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "30m",
+   "title": "WMT 105.98 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "30m",
+   "title": "V 367.57 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "30m",
+   "title": "JNJ 265.87 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "30m",
+   "title": "PG 142.38 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "30m",
+   "title": "HD 306.67 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "30m",
+   "title": "KO 88.43 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "30m",
+   "title": "UNH 391.65 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "30m",
+   "title": "CSCO 108.36 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "30m",
+   "title": "CVX 213.66 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "30m",
+   "title": "IBM 236.68 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "30m",
+   "title": "CRM 245.18 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "30m",
+   "title": "AXP 320.92 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "30m",
+   "title": "GS 1019.10 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "30m",
+   "title": "DIS 104.79 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "30m",
+   "title": "MCD 254.18 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "30m",
+   "title": "MRK 144.54 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "30m",
+   "title": "CAT 800.49 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "30m",
+   "title": "VZ 50.03 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "30m",
+   "title": "BA 206.60 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "30m",
+   "title": "AMGN 382.34 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "30m",
+   "title": "HON 202.75 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "30m",
+   "title": "NKE 36.97 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "30m",
+   "title": "SHW 316.51 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "30m",
+   "title": "MMM 162.29 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "30m",
+   "title": "TRV 365.43 [30m] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "400 \u00d7 30m candles \u00b7 07-28 18:00 \u2192 09-10 16:00 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "1H",
+   "title": "NVDA 218.09 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "1H",
+   "title": "MSFT 492.80 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "1H",
+   "title": "AAPL 321.17 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "1H",
+   "title": "AMZN 252.45 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "1H",
+   "title": "JPM 352.58 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "1H",
+   "title": "WMT 105.98 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "1H",
+   "title": "V 367.57 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "1H",
+   "title": "JNJ 265.87 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "1H",
+   "title": "PG 142.38 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "1H",
+   "title": "HD 306.67 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "1H",
+   "title": "KO 88.43 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "1H",
+   "title": "UNH 391.65 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "1H",
+   "title": "CSCO 108.36 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "1H",
+   "title": "CVX 213.66 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "1H",
+   "title": "IBM 236.68 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "1H",
+   "title": "CRM 245.18 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "1H",
+   "title": "AXP 320.92 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "1H",
+   "title": "GS 1019.10 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "1H",
+   "title": "DIS 104.79 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "1H",
+   "title": "MCD 254.18 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "1H",
+   "title": "MRK 144.54 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "1H",
+   "title": "CAT 800.49 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "1H",
+   "title": "VZ 50.03 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "1H",
+   "title": "BA 206.60 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "1H",
+   "title": "AMGN 382.34 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "1H",
+   "title": "HON 202.75 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "1H",
+   "title": "NKE 36.97 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "1H",
+   "title": "SHW 316.51 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "1H",
+   "title": "MMM 162.29 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "1H",
+   "title": "TRV 365.43 [1H] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "350 \u00d7 1H candles (2y depth) \u00b7 06-30 16:30 \u2192 09-10 15:30 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "1D",
+   "title": "NVDA 218.09 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "1D",
+   "title": "MSFT 492.80 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "1D",
+   "title": "AAPL 321.19 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "1D",
+   "title": "AMZN 252.45 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "1D",
+   "title": "JPM 352.58 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "1D",
+   "title": "WMT 105.98 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "1D",
+   "title": "V 367.57 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "1D",
+   "title": "JNJ 265.87 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "1D",
+   "title": "PG 142.38 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "1D",
+   "title": "HD 306.67 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "1D",
+   "title": "KO 88.43 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "1D",
+   "title": "UNH 391.65 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "1D",
+   "title": "CSCO 108.36 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "1D",
+   "title": "CVX 213.66 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "1D",
+   "title": "IBM 236.68 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "1D",
+   "title": "CRM 245.18 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "1D",
+   "title": "AXP 320.92 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "1D",
+   "title": "GS 1019.10 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "1D",
+   "title": "DIS 104.79 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "1D",
+   "title": "MCD 254.18 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "1D",
+   "title": "MRK 144.54 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "1D",
+   "title": "CAT 800.49 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "1D",
+   "title": "VZ 50.03 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "1D",
+   "title": "BA 206.60 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "1D",
+   "title": "AMGN 382.34 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "1D",
+   "title": "HON 202.75 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "1D",
+   "title": "NKE 36.97 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "1D",
+   "title": "SHW 316.51 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "1D",
+   "title": "MMM 162.29 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "1D",
+   "title": "TRV 365.43 [1D] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "126 \u00d7 daily candles \u00b7 2026-03-12 \u2192 2026-09-10 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "1W",
+   "title": "NVDA 218.09 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "1W",
+   "title": "MSFT 492.80 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "1W",
+   "title": "AAPL 321.19 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "1W",
+   "title": "AMZN 252.45 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "1W",
+   "title": "JPM 352.58 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "1W",
+   "title": "WMT 105.98 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "1W",
+   "title": "V 367.57 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "1W",
+   "title": "JNJ 265.87 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "1W",
+   "title": "PG 142.38 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "1W",
+   "title": "HD 306.67 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "1W",
+   "title": "KO 88.43 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "1W",
+   "title": "UNH 391.65 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "1W",
+   "title": "CSCO 108.36 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "1W",
+   "title": "CVX 213.66 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "1W",
+   "title": "IBM 236.68 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "1W",
+   "title": "CRM 245.18 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "1W",
+   "title": "AXP 320.92 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "1W",
+   "title": "GS 1019.10 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "1W",
+   "title": "DIS 104.79 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "1W",
+   "title": "MCD 254.18 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "1W",
+   "title": "MRK 144.54 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "1W",
+   "title": "CAT 800.49 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "1W",
+   "title": "VZ 50.03 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "1W",
+   "title": "BA 206.60 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "1W",
+   "title": "AMGN 382.34 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "1W",
+   "title": "HON 202.75 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "1W",
+   "title": "NKE 36.97 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "1W",
+   "title": "SHW 316.51 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "1W",
+   "title": "MMM 162.29 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "1W",
+   "title": "TRV 365.43 [1W] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "104 \u00d7 weekly candles \u00b7 2024-09-16 \u2192 2026-09-08 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NVDA",
+   "tf": "1M",
+   "title": "NVDA 218.09 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MSFT",
+   "tf": "1M",
+   "title": "MSFT 492.80 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AAPL",
+   "tf": "1M",
+   "title": "AAPL 321.19 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMZN",
+   "tf": "1M",
+   "title": "AMZN 252.45 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JPM",
+   "tf": "1M",
+   "title": "JPM 352.58 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "WMT",
+   "tf": "1M",
+   "title": "WMT 105.98 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "V",
+   "tf": "1M",
+   "title": "V 367.57 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "JNJ",
+   "tf": "1M",
+   "title": "JNJ 265.87 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "PG",
+   "tf": "1M",
+   "title": "PG 142.38 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HD",
+   "tf": "1M",
+   "title": "HD 306.67 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "KO",
+   "tf": "1M",
+   "title": "KO 88.43 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "UNH",
+   "tf": "1M",
+   "title": "UNH 391.65 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CSCO",
+   "tf": "1M",
+   "title": "CSCO 108.36 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CVX",
+   "tf": "1M",
+   "title": "CVX 213.66 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "IBM",
+   "tf": "1M",
+   "title": "IBM 236.68 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CRM",
+   "tf": "1M",
+   "title": "CRM 245.18 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AXP",
+   "tf": "1M",
+   "title": "AXP 320.92 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "GS",
+   "tf": "1M",
+   "title": "GS 1019.10 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "DIS",
+   "tf": "1M",
+   "title": "DIS 104.79 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MCD",
+   "tf": "1M",
+   "title": "MCD 254.18 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MRK",
+   "tf": "1M",
+   "title": "MRK 144.54 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "CAT",
+   "tf": "1M",
+   "title": "CAT 800.49 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "VZ",
+   "tf": "1M",
+   "title": "VZ 50.03 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "BA",
+   "tf": "1M",
+   "title": "BA 206.60 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "AMGN",
+   "tf": "1M",
+   "title": "AMGN 382.34 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "HON",
+   "tf": "1M",
+   "title": "HON 202.75 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "NKE",
+   "tf": "1M",
+   "title": "NKE 36.97 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "SHW",
+   "tf": "1M",
+   "title": "SHW 316.51 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "MMM",
+   "tf": "1M",
+   "title": "MMM 162.29 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  },
+  {
+   "symbol": "TRV",
+   "tf": "1M",
+   "title": "TRV 365.43 [1M] \u2014 DOW 30 Components",
+   "match": true,
+   "canvases": 7,
+   "blank": false,
+   "head": "60 \u00d7 monthly candles \u00b7 2021-10-01 \u2192 2026-09-01 \u00b7 yfinance"
+  }
+ ]
+}

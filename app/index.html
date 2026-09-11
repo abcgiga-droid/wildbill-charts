@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildbill Charts — real data (lightweight-charts)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: #0b0e11; color: #d1d4dc; height: 100vh; display: flex; flex-direction: column; }
+  header { background: #0f1419; color: #fff; padding: 8px 16px; display: flex; align-items: center; gap: 18px; border-bottom: 1px solid #1e2530; }
+  header .brand { font-weight: 800; letter-spacing: 1px; color: #00acc1; font-size: 15px; white-space: nowrap; }
+  header .brand .dot { color: #26a69a; }
+  /* MARKETS hover dropdown in header */
+  #hdr-mkt { position: relative; }
+  #hdr-mkt-toggle { background: #131a24; color: #9aa4b2; border: 1px solid #1e2530; border-radius: 5px; font-size: 12px; font-weight: 700; padding: 5px 12px; cursor: pointer; letter-spacing: 0.5px; }
+  #hdr-mkt-toggle:hover, #hdr-mkt-toggle.open { color: #fff; border-color: #00acc1; }
+  #hdr-mkt-toggle .caret { font-size: 9px; margin-left: 4px; }
+  #hdr-mkt-panel { display: none; position: absolute; top: 105%; left: 0; min-width: 240px; max-height: 360px; overflow-y: auto; background: #0f1419; border: 1px solid #1e2530; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 50; }
+  #hdr-mkt-panel.open { display: block; }
+  #hdr-mkt-panel .mkt-item { display: flex; justify-content: space-between; gap: 6px; padding: 8px 12px; font-size: 13px; cursor: pointer; border-left: 2px solid transparent; }
+  #hdr-mkt-panel .mkt-item:hover { background: #1a2230; }
+  #hdr-mkt-panel .mkt-item.active { background: #1a2230; border-left-color: #00acc1; color: #fff; }
+  #hdr-mkt-panel .mkt-item .badge { font-size: 11px; opacity: 0.7; }
+  /* search */
+  #search { background: #131a24; color: #d1d4dc; border: 1px solid #1e2530; border-radius: 5px; font-size: 12px; padding: 5px 10px; width: 180px; outline: none; }
+  #search::placeholder { color: #5a6472; }
+  #search:focus { border-color: #00acc1; }
+  /* status chip */
+  #status-chip { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: #131a24; color: #9aa4b2; border: 1px solid #1e2530; white-space: nowrap; }
+  #status-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: #26a69a; }
+  #status-chip.stale .dot { background: #f0b90b; }
+  #status-chip.partial .dot { background: #f0b90b; }
+  #status-chip.off .dot { background: #ef5350; }
+  #app { flex: 1; display: flex; min-height: 0; }
+  #chart-wrap { flex: 1; position: relative; min-width: 0; }
+  #chart { position: absolute; inset: 0; }
+  #symbol-head { position: absolute; top: 34px; left: 12px; z-index: 5; font-size: 13px; pointer-events: none; line-height: 1.5; text-shadow: 0 1px 2px #000; }
+  #symbol-head b { font-size: 18px; color: #fff; }
+  #symbol-head .meta { opacity: 0.75; font-size: 12px; }
+  #tfbar { position: absolute; top: 6px; left: 12px; z-index: 6; display: flex; gap: 4px; }
+  #tfbar button { background: #131a24; color: #9aa4b2; border: 1px solid #1e2530; border-radius: 4px; font-size: 11px; padding: 2px 8px; cursor: pointer; }
+  #tfbar button:hover { color: #fff; border-color: #00acc1; }
+  #tfbar button.active { background: #00acc1; border-color: #00acc1; color: #fff; font-weight: 700; }
+  #watchlist { width: 260px; border-left: 1px solid #1e2530; overflow-y: auto; background: #0f1419; position: relative; }
+  #watchlist h3 { padding: 6px 12px 6px; font-size: 14px; color: #fff; position: sticky; top: 0; background: #0f1419; z-index: 2; }
+  #watchlist h3 .count { font-weight: 400; font-size: 12px; opacity: 0.7; }
+  .row { display: grid; grid-template-columns: 60px 1fr 70px; gap: 4px; padding: 6px 12px; cursor: pointer; font-size: 13px; border-left: 2px solid transparent; }
+  .row:hover { background: #1a2230; }
+  .row.active { background: #1a2230; border-left-color: #00acc1; }
+  .row .sym { font-weight: 700; color: #fff; }
+  .row .last { text-align: right; }
+  .row .chg { text-align: right; }
+  .up { color: #26a69a; } .down { color: #ef5350; }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">WILDBILL<span class="dot">.</span>CHARTS</span>
+  <div id="hdr-mkt">
+    <button id="hdr-mkt-toggle">MARKETS <span class="caret">▾</span></button>
+    <div id="hdr-mkt-panel"></div>
+  </div>
+  <input id="search" type="text" placeholder="Search symbol…" autocomplete="off" spellcheck="false">
+  <span id="status-chip"><span class="dot"></span><span id="status-text">loading…</span></span>
+</header>
+<div id="app">
+  <div id="chart-wrap">
+    <div id="tfbar"></div>
+    <div id="symbol-head">loading&hellip;</div>
+    <div id="chart"></div>
+  </div>
+  <div id="watchlist">
+    <h3>Watchlist <span class="count" id="watch-count"></span></h3>
+    <div id="rows"></div>
+  </div>
+</div>
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="./markets.js"></script>
+<script src="./tf.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
