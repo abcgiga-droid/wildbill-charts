@@ -70,7 +70,7 @@
   function boot() {
     var el = document.getElementById("chart");
     chart = LightweightCharts.createChart(el, {
-      layout: { background: { color: "#0b0e11" }, textColor: "#d1d4dc" },
+      layout: { background: { color: "#0b0e11" }, textColor: "#d1d4dc", attributionLogo: false },
       grid: { vertLines: { color: "rgba(42,46,57,0.5)" }, horzLines: { color: "rgba(42,46,57,0.5)" } },
       timeScale: { timeVisible: false },
       rightPriceScale: { borderVisible: false },
