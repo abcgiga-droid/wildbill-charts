@@ -1,6 +1,6 @@
 #!/bin/bash
 # deploy.sh — side-by-side install on droplet ALREADY hosting another site.
-# SAFE: audit by default; --apply adds /opt checkout + venv + ONE systemd
+# SAFE: audit by default; --apply adds /srv checkout + venv + ONE systemd
 # unit + ONE nginx vhost file, then `nginx -t && reload` (NEVER restart).
 # Existing vhosts are never edited. Rollback = stop unit, delete 2 new
 # files, reload. See README-DEPLOY.md for full steps + rollback.
@@ -11,7 +11,7 @@
 set -u
 REPO="${REPO:-https://github.com/abcgiga-droid/wildbill-charts.git}"
 BRANCH="${BRANCH:-main}"
-DEST="${DEST:-/opt/wildbill-charts}"
+DEST="${DEST:-/srv/wildbill-charts}"
 PORT="${PORT:-8910}"
 CHARTS_DOMAIN="${CHARTS_DOMAIN:-charts.example.com}"
 DATA_MODE="${DATA_MODE:-dow30}"
@@ -51,8 +51,9 @@ if [ -d "$DEST/.git" ]; then
   git -C "$DEST" pull --ff-only origin "$BRANCH"
 else git clone --branch "$BRANCH" --depth 1 "$REPO" "$DEST"; fi
 say "[2/6] venv + pinned deps"
-apt-get update -qq && apt-get install -y -qq python3-venv python3-pip curl >/dev/null
-[ -x "$DEST/.venv/bin/python" ] || python3 -m venv "$DEST/.venv"
+apt-get update -qq && apt-get install -y -qq git curl >/dev/null
+command -v /usr/bin/python3.11 >/dev/null || { say "python3.11 missing: apt install -y python3.11 python3.11-venv"; exit 1; }
+[ -x "$DEST/.venv/bin/python" ] || /usr/bin/python3.11 -m venv "$DEST/.venv"
 "$DEST/.venv/bin/pip" install -q --upgrade pip
 "$DEST/.venv/bin/pip" install -q -r "$DEST/requirements.txt"
 say "[3/6] data ($DATA_MODE)"
@@ -68,10 +69,11 @@ else
   done
   say "  removed $n non-DOW30 files; kept $(ls "$DEST"/app/data | wc -l) files ($(du -sh "$DEST"/app/data | cut -f1))"
 fi
-chown -R www-data:www-data "$DEST"
+chown -R hamid:www-data "$DEST"
 say "[4/6] systemd unit (new file only)"
 sed -e "s#WorkingDirectory=.*#WorkingDirectory=$DEST#" \
     -e "s#ExecStart=.*#ExecStart=$DEST/.venv/bin/python server/server.py --port $PORT#" \
+    -e "s#^User=.*#User=hamid#" \
     "$DEST/deploy/wildbill.service" > /etc/systemd/system/wildbill.service
 systemctl daemon-reload
 systemctl enable --now wildbill
