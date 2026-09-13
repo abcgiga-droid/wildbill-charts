@@ -13,6 +13,9 @@ Primary source (static JSON, no API key):
     https://watchlist-static-files.web.app/data/s%26p500.json
     https://watchlist-static-files.web.app/data/coins.json
     https://watchlist-static-files.web.app/data/etfs_market_cap.json
+    https://watchlist-static-files.web.app/data/arkk.json
+    https://watchlist-static-files.web.app/data/spysectors.json
+    https://watchlist-static-files.web.app/data/stocks.json
 
 Wikipedia is retained as a per-index fallback:
     DOW30  https://en.wikipedia.org/wiki/List_of_Dow_Jones_Industrial_Average_companies
@@ -23,7 +26,10 @@ Wikipedia is retained as a per-index fallback:
 
 Lists that are NOT on Wikipedia (R2000) are carried over unchanged from the
 current app/markets.js. ARKK and sector lists use the watchlist JSON files.
-CRYPTO and ETF100 use bounded ranked slices from the watchlist JSON files.
+CRYPTO, ETF100 and STOCKS use bounded ranked slices from the watchlist JSON
+files (full Yahoo-fetchable membership in `symbols`, top-N in `priceSymbols`).
+New watchlist files are appended as new lists (see NEW_LISTS) instead of
+dropping them when the local markets.js does not have them yet.
 
 Usage:
   python3 scripts/fetch_constituents.py             # fetch live + rewrite app/markets.js
@@ -82,6 +88,12 @@ WEB_SOURCES = {
     "ETF100": {
         "url": "https://watchlist-static-files.web.app/data/etfs_market_cap.json",
         "kind": "etf",
+        "limit": 100,
+        "full": True,
+        "min": 100},
+    "STOCKS": {
+        "url": "https://watchlist-static-files.web.app/data/stocks.json",
+        "kind": "stocks",
         "limit": 100,
         "full": True,
         "min": 100},
@@ -291,8 +303,14 @@ def find_col(headers, aliases):
     return None
 
 
-def clean_symbol(raw):
-    """Normalize a ticker cell. Returns None if it is not a valid symbol."""
+def clean_symbol(raw, yahoo_only=True):
+    """Normalize a ticker cell. Returns None if it is not a valid symbol.
+
+    With yahoo_only=True (default), foreign-suffixed tickers (e.g.
+    2222.SR, 005930.KS, SINCH.ST) are rejected: Yahoo uses different
+    symbols for those venues and clean_symbol must not silently map them
+    onto a wrong US ticker. Pass yahoo_only=False for pure shape checks.
+    """
     if raw is None:
         return None
     s = raw.replace("\xa0", " ").strip(" *\u2020\u2021")
@@ -302,6 +320,12 @@ def clean_symbol(raw):
     s = s.upper()
     if not SYMBOL_RE.match(s):
         return None
+    if yahoo_only and "." in s:
+        # Only US class-share dots (BRK.B, BF.B) are Yahoo-fetchable as-is
+        # (fetch_stooq maps them to BRK-B/BF-B). Any other dotted suffix is
+        # a foreign venue code (e.g. .ST .AX .PA .DE) — reject it.
+        if s not in ("BRK.B", "BF.B"):
+            return None
     return s
 
 
@@ -368,6 +392,12 @@ def parse_json_components(payload, need_sector=False):
     return symbols, records
 
 
+# Display symbol -> Yahoo fetch symbol. Dots in filenames/URLs are awkward,
+# so stocks.json "BRK.B" is stored/displayed as "BRK-B" (same Yahoo series
+# fetch_stooq already resolves via YF_ALIASES).
+YAHOO_DISPLAY_FIXES = {"BRK.B": "BRK-B"}
+
+
 def parse_watchlist_ranked(payload, kind, limit):
     """Parse ranked watchlist JSON for the local crypto/ETF list sizes."""
     if isinstance(payload, str):
@@ -387,6 +417,8 @@ def parse_watchlist_ranked(payload, kind, limit):
         if kind == "crypto" and isinstance(raw, str) and raw.endswith("USD"):
             raw = raw[:-3] + "-USD"
         sym = clean_symbol(raw)
+        if isinstance(sym, str):
+            sym = YAHOO_DISPLAY_FIXES.get(sym, sym)
         if not sym or sym in seen:
             continue
         seen.add(sym)
@@ -535,7 +567,7 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
     for lid, cfg in WEB_SOURCES.items():
         try:
             payload = get_json(lid, cfg["url"], offline, cache_dir, fetcher)
-            if cfg["kind"] in ("crypto", "etf"):
+            if cfg["kind"] in ("crypto", "etf", "stocks"):
                 syms, recs = parse_watchlist_ranked(
                     payload, cfg["kind"], None if cfg.get("full") else cfg["limit"])
                 fresh_prices[lid] = syms[:cfg["limit"]]
@@ -587,6 +619,7 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
             fresh[lid] = got
 
     final = []
+    NEW_LISTS = {"STOCKS": ("Top 100 Stocks", True)}
     for l in old_lists:
         if l["id"] in fresh:
             final.append(dict(l, symbols=fresh[l["id"]],
@@ -594,6 +627,12 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
             stats["refreshed"].append(l["id"])
         else:
             final.append(dict(l))
+    for lid, (label, staged) in NEW_LISTS.items():
+        if lid in fresh and lid not in {l["id"] for l in old_lists}:
+            final.append({"id": lid, "label": label, "staged": staged,
+                          "symbols": fresh[lid],
+                          "priceSymbols": fresh_prices.get(lid, fresh[lid])})
+            stats["refreshed"].append(lid)
     return final, stats
 
 
@@ -633,8 +672,13 @@ def main(argv=None):
         return 1
 
     print("\n== summary ==")
+    old_by_id = {x["id"]: x for x in old}
     for l in final:
-        o = old[[i for i, x in enumerate(old) if x["id"] == l["id"]][0]]
+        o = old_by_id.get(l["id"])
+        if o is None:
+            print("  NEW  %-6s %4d syms  (new list)  %s" %
+                  (l["id"], len(l["symbols"]), l["label"]))
+            continue
         add, rem = diff_add_rem(o["symbols"], l["symbols"])
         tag = "OK  " if l["id"] in stats["refreshed"] else "keep"
         print("  %s %-6s %4d syms  (+%d -%d)  %s" %
@@ -758,6 +802,11 @@ class SelfTest(unittest.TestCase):
         self.assertIsNone(clean_symbol("Not A Ticker"))
         self.assertIsNone(clean_symbol(""))
         self.assertIsNone(clean_symbol(None))
+        # Foreign venue suffixes are not Yahoo-fetchable as-is.
+        self.assertIsNone(clean_symbol("SINCH.ST"))
+        self.assertIsNone(clean_symbol("CBA.AX"))
+        self.assertIsNone(clean_symbol("AIR.PA"))
+        self.assertEqual(clean_symbol("SINCH.ST", yahoo_only=False), "SINCH.ST")
 
     def test_parse_dow_shaped(self):
         syms, recs = parse_components(self._dow_fixture(30), need_sector=True)
@@ -930,7 +979,7 @@ class SelfTest(unittest.TestCase):
                                        cache_dir=Path(td) / "cache",
                                        mins={"DOW30": 2, "NDQ100": 70, "SP500": 10})
             self.assertEqual(stats["refreshed"], [])
-            self.assertEqual(len(stats["failed"]), 7)
+            self.assertEqual(len(stats["failed"]), 8)  # 6 web + SECTORS + STOCKS
             self.assertEqual(final, old)  # nothing lost, nothing crashed
 
     def test_partial_failure_isolated(self):
@@ -960,7 +1009,7 @@ class SelfTest(unittest.TestCase):
             old = self._old(td)
             final, stats = build_lists(old, offline=True, cache_dir=td,
                                        mins={"DOW30": 2, "NDQ100": 70, "SP500": 10})
-            self.assertEqual(len(stats["failed"]), 7)
+            self.assertEqual(len(stats["failed"]), 8)  # 6 web + SECTORS + STOCKS
             self.assertEqual(final, old)
 
 
