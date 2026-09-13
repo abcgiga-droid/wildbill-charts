@@ -98,7 +98,7 @@ def _merge(old, new):
         by[b["time"]] = b
     return [by[k] for k in sorted(by)]
 
-def fetch_one(sym):
+def fetch_one(sym, include_intraday=True):
     """Returns (candles, vols, fresh5m, fresh1h). Daily date-strings;
     intraday as UTC epoch seconds (lightweight-charts UTCTimestamp)."""
     ddf = _hist(sym, "5y", "1d")
@@ -124,6 +124,8 @@ def fetch_one(sym):
         vols.append({"time": row["time"], "value": vv,
                      "color": UP if row["close"] >= row["open"] else DOWN})
     fresh5m, fresh1h = [], []
+    if not include_intraday:
+        return candles, vols, fresh5m, fresh1h
     try:
         fresh5m = _bars_from(_hist(sym, "60d", "5m"))
     except Exception as e:

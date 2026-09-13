@@ -24,10 +24,10 @@ Separate from click-ops. Goal: own charting (lightweight-charts) + real data ser
 2. (done) `scripts/fetch_stooq.py` + `app/` built and verified 30/30.
 
 ## Index constituents (done 2026-09-10)
-- `scripts/fetch_constituents.py` (stdlib only: `urllib` + `html.parser` + `unittest`, no requests/pandas) pulls index members from Wikipedia into `app/markets.js`.
-- Sources: DOW30 → List of Dow Jones Industrial Average companies; NDQ100 → List of NASDAQ-100 companies; SP500 → List of S&P 500 companies; XLI..XLE (10 GICS sector lists) are *derived* from the S&P 500 table's "GICS Sector" column. ARKK/CRYPTO/ETF100/R2000 are local-only and carried over unchanged.
-- Crash-proof: retries w/ backoff, per-list fault isolation (a failed list keeps its previous symbols), HTML cache at `app/.cache_constituents/` + `--offline` mode. `fetch_market.py` was patched to also ingest `var DOW30` so staged data covers the new official members (e.g. GOOGL).
-- Run: `python3 scripts/fetch_constituents.py [--dry-run] [--offline] [--selftest]` (14 bundled unit tests, all passing).
+- `scripts/fetch_constituents.py` (stdlib only: `urllib` + `json` + `html.parser` + `unittest`, no requests/pandas) pulls index members into `app/markets.js`.
+- Sources: DOW30, NDQ100, SP500, ARKK, CRYPTO, ETF100, and XLI..XLE use static JSON files at `watchlist-static-files.web.app`; DOW30/NDQ100/SP500 fall back independently to their corresponding Wikipedia tables. Full membership is stored in `symbols`; only `priceSymbols` are staged from Yahoo. CRYPTO has 15 price symbols and ETF100 has 20. R2000 remains a local sample because the site has no equivalent list.
+- Crash-proof: retries w/ backoff, per-list fault isolation (a failed list keeps its previous symbols), JSON/HTML cache at `app/.cache_constituents/` + `--offline` mode. `fetch_market.py` was patched to also ingest `var DOW30` so staged data covers the new official members (e.g. GOOGL).
+- Run: `python3 scripts/fetch_constituents.py [--dry-run] [--offline] [--selftest]` (20 bundled unit tests, all passing).
 - Result of first live run: DOW30=30 (official, GOOGL in / VZ out), NDQ100=102, SP500=503, 11 sector lists derived, locals untouched.
 - Follow-up as needed: `python3 scripts/fetch_market.py` to stage `app/data/*.json` for the newly listed symbols; then re-run `scripts/verify.py`.
 - 2026-09-10 Yahoo staging done on `/usr/bin/python3` (only interpreter with yfinance+pandas): 288/292 fresh + 3 alias rescues (`BRK.B`→`BRK-B`, `BF.B`→`BF-B`, `SQ`→`XYZ`), `EXAS` (ARKK, delisted) un-fetchable anywhere. Result: `app/data/` = 587 files, every market list 100% cached except EXAS. Patched `fetch_stooq._hist` fail-fast on Yahoo range errors + `YF_ALIASES`; see scripts.

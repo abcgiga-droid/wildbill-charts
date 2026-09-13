@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""fetch_constituents.py — Pull index constituent lists from Wikipedia into app/markets.js.
+"""fetch_constituents.py — Pull index constituent lists into app/markets.js.
 
 STDLIB ONLY (urllib + html.parser + unittest): no requests/pandas/bs4, so it
 cannot crash on missing third-party packages in a bare venv.
@@ -7,15 +7,23 @@ cannot crash on missing third-party packages in a bare venv.
 Every index is fetched INDEPENDENTLY. A failure for one list keeps its previous
 symbols from app/markets.js and never aborts the run.
 
-Sources (Wikipedia, no API key):
-  DOW30  https://en.wikipedia.org/wiki/List_of_Dow_Jones_Industrial_Average_companies
-  NDQ100 https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies
-  SP500  https://en.wikipedia.org/wiki/List_of_S%26P_500_companies
+Primary source (static JSON, no API key):
+    https://watchlist-static-files.web.app/data/dow.json
+    https://watchlist-static-files.web.app/data/nasdaq.json
+    https://watchlist-static-files.web.app/data/s%26p500.json
+    https://watchlist-static-files.web.app/data/coins.json
+    https://watchlist-static-files.web.app/data/etfs_market_cap.json
+
+Wikipedia is retained as a per-index fallback:
+    DOW30  https://en.wikipedia.org/wiki/List_of_Dow_Jones_Industrial_Average_companies
+    NDQ100 https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies
+    SP500  https://en.wikipedia.org/wiki/List_of_S%26P_500_companies
   XLI..XLE (10 GICS sector lists) are DERIVED from the SP500 table's "GICS Sector"
   column, so one page keeps the whole S&P family in sync.
 
-Lists that are NOT on Wikipedia (ARKK, CRYPTO, ETF100, R2000) are carried over
-unchanged from the current app/markets.js.
+Lists that are NOT on Wikipedia (R2000) are carried over unchanged from the
+current app/markets.js. ARKK and sector lists use the watchlist JSON files.
+CRYPTO and ETF100 use bounded ranked slices from the watchlist JSON files.
 
 Usage:
   python3 scripts/fetch_constituents.py             # fetch live + rewrite app/markets.js
@@ -51,15 +59,39 @@ SECTOR_MIN = 5  # minimum symbols a derived sector list must have to be accepted
 
 WEB_SOURCES = {
     "DOW30": {
-        "url": "https://en.wikipedia.org/wiki/List_of_Dow_Jones_Industrial_Average_companies",
+        "url": "https://watchlist-static-files.web.app/data/dow.json",
+        "fallback": "https://en.wikipedia.org/wiki/List_of_Dow_Jones_Industrial_Average_companies",
+        "kind": "json",
         "min": 20},
     "NDQ100": {
-        "url": "https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies",
+        "url": "https://watchlist-static-files.web.app/data/nasdaq.json",
+        "fallback": "https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies",
+        "kind": "json",
         "min": 60},
     "SP500": {
-        "url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+        "url": "https://watchlist-static-files.web.app/data/s%26p500.json",
+        "fallback": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+        "kind": "json",
         "min": 400},
+    "CRYPTO": {
+        "url": "https://watchlist-static-files.web.app/data/coins.json",
+        "kind": "crypto",
+        "limit": 15,
+        "full": True,
+        "min": 15},
+    "ETF100": {
+        "url": "https://watchlist-static-files.web.app/data/etfs_market_cap.json",
+        "kind": "etf",
+        "limit": 20,
+        "full": True,
+        "min": 20},
+    "ARKK": {
+        "url": "https://watchlist-static-files.web.app/data/arkk.json",
+        "kind": "json",
+        "min": 20},
 }
+
+SECTOR_SOURCE = "https://watchlist-static-files.web.app/data/spysectors.json"
 
 # markets.js list id -> GICS sector as written on the S&P 500 page
 SECTOR_LISTS = {
@@ -102,7 +134,7 @@ class ParseError(Exception):
 # HTTP + cache
 # ---------------------------------------------------------------------------
 def fetch_url(url, timeout=45, tries=3):
-    """GET url -> html text. Retries 5xx/429 with backoff, fails fast on 4xx."""
+    """GET url -> response text. Retries 5xx/429, fails fast on 4xx."""
     last = None
     for attempt in range(tries):
         req = urllib.request.Request(
@@ -112,8 +144,6 @@ def fetch_url(url, timeout=45, tries=3):
                 if r.status != 200:
                     raise FetchError("HTTP %d" % r.status)
                 data = r.read().decode("utf-8", "replace")
-                if "<table" not in data:
-                    raise FetchError("response contains no <table>")
                 return data
         except urllib.error.HTTPError as e:
             last = e
@@ -145,6 +175,29 @@ def save_cached(cache_dir, cfg_id, html_text):
         cache_path(d, cfg_id).write_text(html_text, encoding="utf-8")
     except OSError as e:
         print("  ! cache write failed: %s" % e, flush=True)
+
+
+def json_cache_path(cache_dir, cfg_id):
+    return Path(cache_dir) / (cfg_id + ".json")
+
+
+def get_json(cfg_id, url, offline, cache_dir, fetcher):
+    """Return decoded JSON. Online: fetch and cache; offline: cache only."""
+    p = json_cache_path(cache_dir, cfg_id)
+    if offline:
+        if not p.exists():
+            raise CacheMiss("no cached JSON for %s (run online once)" % cfg_id)
+        return json.loads(p.read_text(encoding="utf-8"))
+    try:
+        payload = fetcher(url)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(payload), encoding="utf-8")
+        return payload
+    except Exception as e:
+        if p.exists():
+            print("  %s: %s -> using cached JSON" % (cfg_id, e), flush=True)
+            return json.loads(p.read_text(encoding="utf-8"))
+        raise
 
 
 def get_html(cfg_id, url, offline, cache_dir, fetcher):
@@ -289,12 +342,95 @@ def parse_components(html_text, need_sector=False):
     return symbols, records
 
 
+def parse_json_components(payload, need_sector=False):
+    """Parse watchlist JSON records -> (ordered symbols, [(symbol, sector)])."""
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError as e:
+            raise ParseError("invalid JSON payload: %s" % e)
+    if not isinstance(payload, list):
+        raise ParseError("JSON payload is not a list")
+    symbols, records, seen = [], [], set()
+    for row in payload:
+        if not isinstance(row, dict):
+            continue
+        sym = clean_symbol(row.get("Ticker") or row.get("ticker") or row.get("Symbol"))
+        if not sym or sym in seen:
+            continue
+        seen.add(sym)
+        symbols.append(sym)
+        records.append((sym, str(row.get("Sector") or row.get("sector") or "").strip()))
+    if not symbols:
+        raise ParseError("JSON payload contains no usable tickers")
+    if need_sector and not any(sec for _, sec in records):
+        raise ParseError("JSON payload contains no sector data")
+    return symbols, records
+
+
+def parse_watchlist_ranked(payload, kind, limit):
+    """Parse ranked watchlist JSON for the local crypto/ETF list sizes."""
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError as e:
+            raise ParseError("invalid JSON payload: %s" % e)
+    if not isinstance(payload, list):
+        raise ParseError("JSON payload is not a list")
+    symbols, seen = [], set()
+    for row in payload:
+        if not isinstance(row, dict):
+            continue
+        if kind == "crypto" and row.get("Stablecoin"):
+            continue
+        raw = row.get("Ticker") or row.get("ticker") or row.get("Symbol")
+        if kind == "crypto" and isinstance(raw, str) and raw.endswith("USD"):
+            raw = raw[:-3] + "-USD"
+        sym = clean_symbol(raw)
+        if not sym or sym in seen:
+            continue
+        seen.add(sym)
+        symbols.append(sym)
+        if limit and len(symbols) == limit:
+            break
+    if limit and len(symbols) < limit:
+        raise ParseError("JSON payload contains only %d usable tickers; need %d" %
+                         (len(symbols), limit))
+    return symbols, [(sym, "") for sym in symbols]
+
+
+def parse_watchlist_sectors(payload):
+    """Parse spysectors.json into markets.js sector-id -> ticker list."""
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError as e:
+            raise ParseError("invalid JSON payload: %s" % e)
+    if not isinstance(payload, list):
+        raise ParseError("sector JSON payload is not a list")
+    by_ticker = {row.get("Ticker"): row.get("Comps", [])
+                 for row in payload if isinstance(row, dict)}
+    out = {}
+    for market_id, etf_ticker in ((lid, lid) for lid in SECTOR_LISTS):
+        rows = by_ticker.get(etf_ticker, [])
+        symbols = []
+        for row in rows:
+            sym = clean_symbol(row.get("Ticker") if isinstance(row, dict) else None)
+            if sym and sym not in symbols:
+                symbols.append(sym)
+        if len(symbols) < SECTOR_MIN:
+            raise ParseError("sector %s contains only %d usable tickers" %
+                             (market_id, len(symbols)))
+        out[market_id] = symbols
+    return out
+
+
 # ---------------------------------------------------------------------------
 # app/markets.js read / write (keeps the exact same file shape the app uses)
 # ---------------------------------------------------------------------------
 _OBJ = re.compile(
     r'\{\s*id:\s*"([A-Za-z0-9_]+)"[^{}]*?label:\s*"(?:[^"\\]|\\.)*"[^{}]*?'
-    r"symbols:\s*(\[[^\]]*\]|DOW30)[^{}]*?\}",
+    r"symbols:\s*(\[[^\]]*\]|DOW30)(?:[^{}]*?priceSymbols:\s*\[[^\]]*\])?[^{}]*?\}",
     re.S)
 _VAR = re.compile(r"var\s+DOW30\s*=\s*(\[[^\]]*\])\s*;", re.S)
 _TOKEN = re.compile(r'"([A-Z0-9.\-]{1,12})"')
@@ -319,8 +455,11 @@ def read_markets(path):
         label_m = re.search(r'label:\s*"((?:[^"\\]|\\.)*)"', obj)
         label = label_m.group(1) if label_m else lid
         syms = _sym_array(raw) if raw.startswith("[") else list(dow)
+        price_m = re.search(r'priceSymbols:\s*(\[[^\]]*\])', obj)
+        price_syms = _sym_array(price_m.group(1)) if price_m else list(syms)
         lists.append({"id": lid, "label": label,
-                      "staged": "staged: true" in obj, "symbols": syms})
+                  "staged": "staged: true" in obj, "symbols": syms,
+                  "priceSymbols": price_syms})
     if not lists:
         raise ValueError("markets.js parsed to zero lists")
     return lists
@@ -334,10 +473,9 @@ def render_markets_js(lists):
         "/* Wildbill Markets — index constituent lists.",
         " * DOW30 ships with data; every other list is staged: fetched on first",
         " * selection via scripts/fetch_market.py. THIS FILE IS GENERATED by",
-        " * scripts/fetch_constituents.py from Wikipedia (List of Dow Jones",
-        " * Industrial Average companies, List of NASDAQ-100 companies, List of",
-        " * S&P 500 companies). Sector lists XLI..XLE are derived from the S&P",
-        " * 500 table's \"GICS Sector\" column. Local-only: ARKK/CRYPTO/ETF100/R2000.",
+        " * scripts/fetch_constituents.py from watchlist-static-files.web.app",
+        " * (Wikipedia is the per-index fallback). Sector lists XLI..XLE use",
+        " * the watchlist sector source. R2000 remains local-only.",
         " * Generated: " + stamp,
         " * Counts: " + counts,
         " */",
@@ -351,11 +489,13 @@ def render_markets_js(lists):
         jid = json.dumps(l["id"])
         jlabel = json.dumps(l["label"])
         if l["id"] == "DOW30":
-            out.append('    { id: %s, label: %s, symbols: DOW30 },' % (jid, jlabel))
+            out.append('    { id: %s, label: %s, symbols: DOW30, priceSymbols: %s },' %
+                       (jid, jlabel, json.dumps(l["priceSymbols"])))
         else:
             staged = "staged: true, " if l["staged"] else ""
-            out.append("    { id: %s, label: %s, %ssymbols: %s }," %
-                       (jid, jlabel, staged, json.dumps(l["symbols"])))
+            out.append("    { id: %s, label: %s, %ssymbols: %s, priceSymbols: %s }," %
+                       (jid, jlabel, staged, json.dumps(l["symbols"]),
+                        json.dumps(l["priceSymbols"])))
     out.append("  ];")
     out += [
         "  function get(id) {",
@@ -389,15 +529,30 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
     cache_dir = cache_dir or DEFAULT_CACHE
     old_by = {l["id"]: l for l in old_lists}
     fresh = {}          # list id -> new symbols
+    fresh_prices = {}   # list id -> symbols eligible for local price data
     sp500_records = []
 
     for lid, cfg in WEB_SOURCES.items():
         try:
-            html_text = get_html(lid, cfg["url"], offline, cache_dir, fetcher)
-            syms, recs = parse_components(html_text, need_sector=(lid == "SP500"))
-        except Exception as e:  # network, parse, cache miss: never crash
-            stats["failed"].append("%s: %s" % (lid, e))
-            continue
+            payload = get_json(lid, cfg["url"], offline, cache_dir, fetcher)
+            if cfg["kind"] in ("crypto", "etf"):
+                syms, recs = parse_watchlist_ranked(
+                    payload, cfg["kind"], None if cfg.get("full") else cfg["limit"])
+                fresh_prices[lid] = syms[:cfg["limit"]]
+            else:
+                syms, recs = parse_json_components(payload, need_sector=(lid == "SP500"))
+                fresh_prices[lid] = list(syms)
+        except Exception as primary_error:
+            if not cfg.get("fallback"):
+                stats["failed"].append("%s: %s" % (lid, primary_error))
+                continue
+            try:
+                html_text = get_html(lid, cfg["fallback"], offline, cache_dir, fetcher)
+                syms, recs = parse_components(html_text, need_sector=(lid == "SP500"))
+            except Exception as fallback_error:  # never abort another index
+                stats["failed"].append(
+                    "%s: primary=%s; fallback=%s" % (lid, primary_error, fallback_error))
+                continue
         if len(syms) < mins.get(lid, cfg["min"]):
             stats["failed"].append(
                 "%s: parsed %d symbols < min %d" % (lid, len(syms), cfg["min"]))
@@ -407,7 +562,17 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
             sp500_records = recs
             stats["sp500"] = len(syms)
 
-    if sp500_records:
+    try:
+        sector_payload = get_json("SECTORS", SECTOR_SOURCE, offline, cache_dir, fetcher)
+        sector_lists = parse_watchlist_sectors(sector_payload)
+        for lid, symbols in sector_lists.items():
+            if lid in old_by:
+                fresh[lid] = symbols
+                fresh_prices[lid] = list(symbols)
+    except Exception as e:
+        stats["failed"].append("SECTORS: %s" % e)
+
+    if sp500_records and not any(lid in fresh for lid in SECTOR_LISTS):
         by_sector = {}
         for sym, sec in sp500_records:
             by_sector.setdefault(sec, []).append(sym)
@@ -424,7 +589,8 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
     final = []
     for l in old_lists:
         if l["id"] in fresh:
-            final.append(dict(l, symbols=fresh[l["id"]]))
+            final.append(dict(l, symbols=fresh[l["id"]],
+                             priceSymbols=fresh_prices.get(l["id"], l.get("priceSymbols", fresh[l["id"]]))))
             stats["refreshed"].append(l["id"])
         else:
             final.append(dict(l))
@@ -433,7 +599,7 @@ def build_lists(old_lists, offline=False, cache_dir=None, fetcher=fetch_url, min
 
 def main(argv=None):
     ap = argparse.ArgumentParser(
-        description="Fetch index constituents from Wikipedia into app/markets.js")
+        description="Fetch index constituents into app/markets.js")
     ap.add_argument("--dry-run", action="store_true",
                     help="print what would change, write nothing")
     ap.add_argument("--offline", action="store_true",
@@ -612,6 +778,109 @@ class SelfTest(unittest.TestCase):
         self.assertEqual(len(syms), 3)
         self.assertEqual(dict(recs)["NVDA"], "Information Technology")
 
+    def test_parse_watchlist_json(self):
+        payload = [{"Name": "Apple", "Ticker": "aapl", "Exchange": "NASDAQ"},
+                   {"Name": "Berkshire", "Ticker": "BRK.B", "Sector": "Financials"},
+                   {"Name": "Duplicate", "Ticker": "AAPL"}]
+        syms, recs = parse_json_components(payload)
+        self.assertEqual(syms, ["AAPL", "BRK.B"])
+        self.assertEqual(recs[1], ("BRK.B", "Financials"))
+
+    def test_parse_watchlist_json_requires_sector_data(self):
+        with self.assertRaises(ParseError):
+            parse_json_components([{"Ticker": "AAPL"}], need_sector=True)
+
+    def test_parse_ranked_watchlist_lists(self):
+        crypto = [{"Ticker": "BTCUSD", "Stablecoin": False},
+                  {"Ticker": "USDT", "Stablecoin": True},
+                  {"Ticker": "ETHUSD", "Stablecoin": False}]
+        self.assertEqual(parse_watchlist_ranked(crypto, "crypto", 2)[0],
+                         ["BTC-USD", "ETH-USD"])
+        etfs = [{"Ticker": "VTI"}, {"Ticker": "VOO"}]
+        self.assertEqual(parse_watchlist_ranked(etfs, "etf", 2)[0], ["VTI", "VOO"])
+
+    def test_crypto_etf_membership_vs_bounded_price_symbols(self):
+        """Full membership stays browsable; only top-N slices get price files."""
+        with tempfile.TemporaryDirectory() as td:
+            old = [
+                {"id": "CRYPTO", "label": "Cryptocurrency Coins",
+                 "staged": True, "symbols": ["OLD"],
+                 "priceSymbols": ["OLD"]},
+                {"id": "ETF100", "label": "Top 100 ETFs",
+                 "staged": True, "symbols": ["OLD"],
+                 "priceSymbols": ["OLD"]},
+            ]
+
+            def watchlist(url):
+                if url.endswith("coins.json"):
+                    # 5 ranked coins: full membership = 5, price slice = 2.
+                    return json.dumps([
+                        {"Ticker": "BTCUSD", "Rank": 1},
+                        {"Ticker": "ETHUSD", "Rank": 2},
+                        {"Ticker": "USDT", "Rank": 3},
+                        {"Ticker": "SOLUSD", "Rank": 4},
+                        {"Ticker": "DOGEUSD", "Rank": 5},
+                    ])
+                if url.endswith("etfs_market_cap.json"):
+                    return json.dumps([
+                        {"Ticker": "VTI", "Rank": 1},
+                        {"Ticker": "VOO", "Rank": 2},
+                        {"Ticker": "SPY", "Rank": 3},
+                    ])
+                raise FetchError("unexpected " + url)
+            saved_cfg = WEB_SOURCES
+            try:
+                globals()["WEB_SOURCES"] = dict(saved_cfg)
+                globals()["WEB_SOURCES"]["CRYPTO"] = dict(
+                    saved_cfg["CRYPTO"], limit=2)
+                globals()["WEB_SOURCES"]["ETF100"] = dict(
+                    saved_cfg["ETF100"], limit=1)
+                # Only CRYPTO/ETF100 are in `old`, so every other web list
+                # just records a failure and leaves `final` untouched.
+                final, stats = build_lists(
+                    old, fetcher=watchlist,
+                    cache_dir=Path(td) / "cache",
+                    mins={"CRYPTO": 2, "ETF100": 1})
+            finally:
+                globals()["WEB_SOURCES"] = saved_cfg
+            by = {l["id"]: l for l in final}
+            self.assertEqual(by["CRYPTO"]["symbols"],
+                             ["BTC-USD", "ETH-USD", "USDT", "SOL-USD",
+                              "DOGE-USD"])
+            self.assertEqual(by["CRYPTO"]["priceSymbols"],
+                             ["BTC-USD", "ETH-USD"])
+            self.assertEqual(by["ETF100"]["symbols"],
+                             ["VTI", "VOO", "SPY"])
+            self.assertEqual(by["ETF100"]["priceSymbols"], ["VTI"])
+            self.assertIn("CRYPTO", stats["refreshed"])
+            self.assertIn("ETF100", stats["refreshed"])
+
+    def test_fetch_market_ignores_membership_only_symbols(self):
+        """fetch_market stages only priceSymbols, never full membership."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "fetch_market_under_test",
+            Path(__file__).resolve().parent / "fetch_market.py")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        with tempfile.TemporaryDirectory() as td:
+            js = Path(td) / "markets.js"
+            js.write_text(
+                'var MARKETS = { LISTS: [\n'
+                '  { id: "BIG", label: "big", symbols: ["AAA", "BBB", "CCC"],'
+                ' priceSymbols: ["AAA"] },\n'
+                ']};')
+            self.assertEqual(mod.all_symbols(path=js), ["AAA"])
+
+    def test_browser_loads_only_price_symbols(self):
+        """app.js fetches priceSymbols (falls back to symbols when absent)."""
+        app_js = (Path(__file__).resolve().parent.parent
+                  / "app" / "app.js").read_text()
+        load = re.search(r"function loadData\(mktId\) \{.*?\n  \}",
+                         app_js, re.S)
+        self.assertIsNotNone(load, "loadData() block not found in app.js")
+        self.assertIn("priceSymbols || lst.symbols", load.group(0))
+
     def test_parse_garbage_html_raises_cleanly(self):
         with self.assertRaises(ParseError):
             parse_components("<html><body>no table here</body></html>",
@@ -661,7 +930,7 @@ class SelfTest(unittest.TestCase):
                                        cache_dir=Path(td) / "cache",
                                        mins={"DOW30": 2, "NDQ100": 70, "SP500": 10})
             self.assertEqual(stats["refreshed"], [])
-            self.assertEqual(len(stats["failed"]), 3)
+            self.assertEqual(len(stats["failed"]), 7)
             self.assertEqual(final, old)  # nothing lost, nothing crashed
 
     def test_partial_failure_isolated(self):
@@ -691,7 +960,7 @@ class SelfTest(unittest.TestCase):
             old = self._old(td)
             final, stats = build_lists(old, offline=True, cache_dir=td,
                                        mins={"DOW30": 2, "NDQ100": 70, "SP500": 10})
-            self.assertEqual(len(stats["failed"]), 3)
+            self.assertEqual(len(stats["failed"]), 7)
             self.assertEqual(final, old)
 
 

@@ -8,6 +8,7 @@ Files:
 - Dockerfile — optional docker path (python:3.12-slim, data excluded by default)
 - .dockerignore — keeps 688MB app/data/ out of docker context
 - deploy/wildbill.service — systemd unit (www-data, hardens, port 8910)
+- deploy/wildbill-refresh.service + .timer — monthly constituent and new-symbol refresh
 - deploy/nginx-charts.conf — subdomain vhost (Option A) + /charts/ alt (Option B)
 - deploy/deploy.sh — audit (default) + --apply installer
 - scripts/audit_droplet.sh — read-only preflight (run first)
@@ -49,5 +50,31 @@ systemctl daemon-reload && nginx -t && systemctl reload nginx
 CHARTS_DOMAIN=charts.example.com DATA_MODE=dow30 bash deploy/deploy.sh --apply
 # or: DATA_MODE=full CHARTS_DOMAIN=charts.example.com bash deploy/deploy.sh --apply
 # Script does: clone /opt/wildbill-charts, venv+pip, trim data (unless full),
-# systemd enable+start, curl /api/health, new nginx vhost, nginx -t && reload.
+# systemd enable+start, monthly refresh timer, curl /api/health, new nginx vhost,
+# nginx -t && reload.
+
+## 6. Monthly market-data refresh
+The deploy script enables `wildbill-refresh.timer`, which runs on the first day
+of each month at 03:00 server time, with up to a 15-minute randomized delay.
+It runs `fetch_constituents.py` first, then refreshes existing daily history for
+all known symbols with `fetch_market.py --refresh-existing --daily-only`, and
+writes only under `/srv/wildbill-charts/app`.
+
+Check or run it manually on the droplet:
+```bash
+systemctl list-timers wildbill-refresh.timer
+systemctl status wildbill-refresh.timer
+sudo systemctl start wildbill-refresh.service
+journalctl -u wildbill-refresh.service -n 100 --no-pager
+```
+
+Before changing the timer to refresh the full archive, run a small daily-only
+pilot. This refreshes up to five existing files and preserves their archived
+intraday bars:
+```bash
+cd /srv/wildbill-charts
+.venv/bin/python scripts/fetch_market.py --refresh-existing --daily-only --limit 5
+```
+Long runs can be resumed with `--start-after SYMBOL` if the process is
+interrupted.
 

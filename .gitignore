@@ -6,3 +6,8 @@ __pycache__/
 # Local runtime and generated files
 *.log
 app/shots/
+
+# Constituent fetch cache (regenerable via
+# `python3 scripts/fetch_constituents.py`; holds ~1.5MB of
+# downloaded HTML/JSON snapshots).
+app/.cache_constituents/

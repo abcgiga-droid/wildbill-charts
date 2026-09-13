@@ -1,0 +1,19 @@
+[Unit]
+Description=Wildbill Charts monthly market-data refresh
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=hamid
+Group=www-data
+WorkingDirectory=/srv/wildbill-charts
+ExecStart=/srv/wildbill-charts/.venv/bin/python scripts/fetch_constituents.py
+ExecStart=/srv/wildbill-charts/.venv/bin/python scripts/fetch_market.py --refresh-existing --daily-only
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/wildbill-charts/app
+StandardOutput=journal
+StandardError=journal

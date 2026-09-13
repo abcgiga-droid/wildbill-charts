@@ -75,8 +75,12 @@ sed -e "s#WorkingDirectory=.*#WorkingDirectory=$DEST#" \
     -e "s#ExecStart=.*#ExecStart=$DEST/.venv/bin/python server/server.py --port $PORT#" \
     -e "s#^User=.*#User=hamid#" \
     "$DEST/deploy/wildbill.service" > /etc/systemd/system/wildbill.service
+  sed "s#/srv/wildbill-charts#$DEST#g" \
+    "$DEST/deploy/wildbill-refresh.service" > /etc/systemd/system/wildbill-refresh.service
+  cp "$DEST/deploy/wildbill-refresh.timer" /etc/systemd/system/wildbill-refresh.timer
 systemctl daemon-reload
 systemctl enable --now wildbill
+  systemctl enable --now wildbill-refresh.timer
 sleep 2
 curl -fsS "http://127.0.0.1:$PORT/api/health" | head -c 300; echo
 systemctl is-active wildbill | grep -q active || { say "wildbill failed - journalctl -u wildbill"; exit 1; }
@@ -92,5 +96,6 @@ nginx -T 2>/dev/null | grep -E "$CHARTS_DOMAIN|proxy_pass http://127.0.0.1:$PORT
 say ""
 say "DEPLOY OK. Rollback:"
 say "  systemctl stop wildbill; systemctl disable wildbill"
-say "  rm /etc/nginx/sites-enabled/wildbill-charts /etc/nginx/sites-available/wildbill-charts /etc/systemd/system/wildbill.service"
+say "  systemctl disable --now wildbill-refresh.timer"
+say "  rm /etc/nginx/sites-enabled/wildbill-charts /etc/nginx/sites-available/wildbill-charts /etc/systemd/system/wildbill.service /etc/systemd/system/wildbill-refresh.service /etc/systemd/system/wildbill-refresh.timer"
 say "  systemctl daemon-reload && nginx -t && systemctl reload nginx"

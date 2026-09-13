@@ -89,7 +89,7 @@
 
   function loadData(mktId) {
     var lst = MKT.get(mktId);
-    var pending = lst.symbols.filter(function (s) { return !DATA[s]; });
+    var pending = (lst.priceSymbols || lst.symbols).filter(function (s) { return !DATA[s]; });
     if (!pending.length) return Promise.resolve(lst);
     return Promise.all(pending.map(function (sym) {
       return fetch("./data/" + sym + ".json")
