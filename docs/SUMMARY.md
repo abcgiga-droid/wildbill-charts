@@ -25,7 +25,7 @@ Separate from click-ops. Goal: own charting (lightweight-charts) + real data ser
 
 ## Index constituents (done 2026-09-10)
 - `scripts/fetch_constituents.py` (stdlib only: `urllib` + `json` + `html.parser` + `unittest`, no requests/pandas) pulls index members into `app/markets.js`.
-- Sources: DOW30, NDQ100, SP500, ARKK, CRYPTO, ETF100, and XLI..XLE use static JSON files at `watchlist-static-files.web.app`; DOW30/NDQ100/SP500 fall back independently to their corresponding Wikipedia tables. Full membership is stored in `symbols`; only `priceSymbols` are staged from Yahoo. CRYPTO has 15 price symbols and ETF100 has 20. R2000 remains a local sample because the site has no equivalent list.
+- Sources: DOW30, NDQ100, SP500, ARKK, CRYPTO, ETF100, and XLI..XLE use static JSON files at `watchlist-static-files.web.app`; DOW30/NDQ100/SP500 fall back independently to their corresponding Wikipedia tables. Full membership is stored in `symbols`; only `priceSymbols` are staged from Yahoo. CRYPTO and ETF100 each have 100 price symbols. R2000 remains a local sample because the site has no equivalent list.
 - Crash-proof: retries w/ backoff, per-list fault isolation (a failed list keeps its previous symbols), JSON/HTML cache at `app/.cache_constituents/` + `--offline` mode. `fetch_market.py` was patched to also ingest `var DOW30` so staged data covers the new official members (e.g. GOOGL).
 - Run: `python3 scripts/fetch_constituents.py [--dry-run] [--offline] [--selftest]` (20 bundled unit tests, all passing).
 - Result of first live run: DOW30=30 (official, GOOGL in / VZ out), NDQ100=102, SP500=503, 11 sector lists derived, locals untouched.

@@ -76,15 +76,15 @@ WEB_SOURCES = {
     "CRYPTO": {
         "url": "https://watchlist-static-files.web.app/data/coins.json",
         "kind": "crypto",
-        "limit": 15,
+        "limit": 100,
         "full": True,
-        "min": 15},
+        "min": 100},
     "ETF100": {
         "url": "https://watchlist-static-files.web.app/data/etfs_market_cap.json",
         "kind": "etf",
-        "limit": 20,
+        "limit": 100,
         "full": True,
-        "min": 20},
+        "min": 100},
     "ARKK": {
         "url": "https://watchlist-static-files.web.app/data/arkk.json",
         "kind": "json",
